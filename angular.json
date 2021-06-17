@@ -1,6 +1,162 @@
 {
   "version": 1,
   "projects": {
+    "booking-domain": {
+      "projectType": "library",
+      "root": "libs/booking/domain",
+      "sourceRoot": "libs/booking/domain/src",
+      "prefix": "nx-cloud-demo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/booking/domain"
+          ],
+          "options": {
+            "jestConfig": "libs/booking/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking/domain/src/**/*.ts",
+              "libs/booking/domain/src/**/*.html"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/booking/domain/tsconfig.lib.json",
+            "project": "libs/booking/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking/domain/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "booking-feature1": {
+      "projectType": "library",
+      "root": "libs/booking/feature1",
+      "sourceRoot": "libs/booking/feature1/src",
+      "prefix": "nx-cloud-demo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/booking/feature1"
+          ],
+          "options": {
+            "jestConfig": "libs/booking/feature1/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking/feature1/src/**/*.ts",
+              "libs/booking/feature1/src/**/*.html"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/booking/feature1/tsconfig.lib.json",
+            "project": "libs/booking/feature1/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking/feature1/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "booking-feature2": {
+      "projectType": "library",
+      "root": "libs/booking/feature2",
+      "sourceRoot": "libs/booking/feature2/src",
+      "prefix": "nx-cloud-demo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/booking/feature2"
+          ],
+          "options": {
+            "jestConfig": "libs/booking/feature2/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking/feature2/src/**/*.ts",
+              "libs/booking/feature2/src/**/*.html"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/booking/feature2/tsconfig.lib.json",
+            "project": "libs/booking/feature2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking/feature2/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "booking-util": {
+      "projectType": "library",
+      "root": "libs/booking/util",
+      "sourceRoot": "libs/booking/util/src",
+      "prefix": "nx-cloud-demo",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/booking/util"
+          ],
+          "options": {
+            "jestConfig": "libs/booking/util/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/booking/util/src/**/*.ts",
+              "libs/booking/util/src/**/*.html"
+            ]
+          }
+        },
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/booking/util/tsconfig.lib.json",
+            "project": "libs/booking/util/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/booking/util/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
     "demo-app": {
       "projectType": "application",
       "root": "apps/demo-app",
@@ -8,8 +164,11 @@
       "prefix": "nx-cloud-demo",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "--builder": "@angular-devkit/build-angular:browser",
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/demo-app",
             "index": "apps/demo-app/src/index.html",
@@ -20,7 +179,9 @@
               "apps/demo-app/src/favicon.ico",
               "apps/demo-app/src/assets"
             ],
-            "styles": ["apps/demo-app/src/styles.css"],
+            "styles": [
+              "apps/demo-app/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -85,7 +246,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/demo-app"],
+          "outputs": [
+            "coverage/apps/demo-app"
+          ],
           "options": {
             "jestConfig": "apps/demo-app/jest.config.js",
             "passWithNoTests": true
@@ -114,7 +277,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/demo-app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/demo-app-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

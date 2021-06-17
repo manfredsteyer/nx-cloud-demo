@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-cloud-demo/booking/domain": ["libs/booking/domain/src/index.ts"],
+      "@nx-cloud-demo/booking/feature1": ["libs/booking/feature1/src/index.ts"],
+      "@nx-cloud-demo/booking/feature2": ["libs/booking/feature2/src/index.ts"],
+      "@nx-cloud-demo/booking/util": ["libs/booking/util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

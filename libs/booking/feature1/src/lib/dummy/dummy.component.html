@@ -1,0 +1,13 @@
+<div *ngFor="let item of items">
+    <h2>{{item}}</h2>
+    <nx-cloud-demo-dummy-domain></nx-cloud-demo-dummy-domain>
+</div>
+
+<p *ngIf="items.length < 10">
+    Please add further items!
+</p>
+
+<form>
+    <input #input>
+    <button (click)="add(input.value)">Add</button>
+</form>
