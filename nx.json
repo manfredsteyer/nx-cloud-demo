@@ -1,0 +1,30 @@
+{
+  "npmScope": "nx-cloud-demo",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "demo-app": {
+      "tags": []
+    },
+    "demo-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["demo-app"]
+    }
+  }
+}
